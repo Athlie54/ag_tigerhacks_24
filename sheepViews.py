@@ -13,10 +13,11 @@ def SheepWindow():
     label.pack()
     idle = [tkinter.PhotoImage(file=path+'Growth.gif',format = 'gif -index %i' %(i)) for i in range(3)]#idle gif
     frame = idle[0]
+    #TODO: calculate this bigFrame size based on screen size becuase whiteboxing is bad. thanks github
     bigFrame = frame.zoom(2,2)
     width = window.winfo_screenwidth()
     height = window.winfo_screenheight()
-    window.geometry(str(int(width/20))+'x'+str(int(width/20)))
+    window.geometry(str(int(width/20))+'x'+str(int(width/20))) #GROSS.
     label.configure(image=bigFrame)
     window.mainloop()
     #make it stay on top
