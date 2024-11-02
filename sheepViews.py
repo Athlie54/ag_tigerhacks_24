@@ -1,7 +1,7 @@
 # sheep window! sheep window!
 import tkinter
 from tkinter import *
-import win32api
+#import win32api
 
 bg = '#ffa3bb'
 
