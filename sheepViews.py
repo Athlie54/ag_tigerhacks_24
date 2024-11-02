@@ -1,23 +1,27 @@
 # sheep window! sheep window!
 import tkinter
-import win32api
 
 window = tkinter.Tk()
 path = 'SheepAnimations\\'
 
+#def getWindowHeight(event):
+#    return event.winfo_height()
+
 def SheepWindow():
-    window.config(highlightbackground='#ffa3bb')
+    window.config(highlightbackground='#ffa3bb') 
     label = tkinter.Label(window,bd=0,bg='#ffa3bb')
     window.overrideredirect(True)
-    window.wm_attributes('-transparentcolor','#ffa3bb')
+    window.wm_attributes('-transparentcolor','#ffa3bb') # make the background transparent based on hex code of the background color
     label.pack()
-    idle = [tkinter.PhotoImage(file=path+'Growth.gif',format = 'gif -index %i' %(i)) for i in range(3)]#idle gif
-    frame = idle[0]
-    #TODO: calculate this bigFrame size based on screen size becuase whiteboxing is bad. thanks github
-    bigFrame = frame.zoom(2,2)
+    animation = [tkinter.PhotoImage(file=path+'Growth.gif',format = 'gif -index %i' %(i)) for i in range(3)]#idle gif
+    frame = animation[0]
     width = window.winfo_screenwidth()
     height = window.winfo_screenheight()
+    #TODO: calculate this bigFrame size based on screen size becuase whiteboxing is bad. thanks github
     window.geometry(str(int(width/20))+'x'+str(int(width/20))) #GROSS.
+    #windowHeight = getWindowHeight(window)
+    #bigFrame = frame.zoom(int(windowHeight),int(windowHeight))
+    bigFrame = frame.zoom(int((width/20)/32),int((width/20)/32))
     label.configure(image=bigFrame)
     window.mainloop()
     #make it stay on top
