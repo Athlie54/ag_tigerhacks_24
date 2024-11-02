@@ -7,32 +7,28 @@ class Task:
         self.taskName = taskName
         self.timeToWork = timeToWork
         self.timeToRest = timeToRest
-        self.timeWorked = 0
-        self.timeRested = 0
         self.timeStarted = datetime.datetime.now()
+        self.timeRemaining = None
         self.timeEnded = None
         self.isWorking = True
-        self.isResting = False
 
     def start(self):
         self.timeStarted = datetime.datetime.now()
+        self.timeRemaining = self.timeToWork
         self.isWorking = True
-        self.isResting = False
 
     def stop(self):
         self.timeEnded = datetime.datetime.now()
+        self.timeRemaining = None
         self.isWorking = False
-        self.isResting = False
 
     def rest(self):
-        self.timeRested = self.timeRested + 1
-        self.isResting = True
         self.isWorking = False
+        self.timeRemaining = self.timeToRest
 
     def work(self):
-        self.timeWorked = self.timeWorked + 1
         self.isWorking = True
-        self.isResting = False
+        self.timeRemaining = self.timeToWork
 
     def getTaskName(self):
         return self.taskName
@@ -43,11 +39,8 @@ class Task:
     def getTimeToRest(self):
         return self.timeToRest
 
-    def getTimeWorked(self):
-        return self.timeWorked
-
-    def getTimeRested(self):
-        return self.timeRested
+    def getTimeRemaining(self):
+        return self.timeRemaining
 
     def getTimeStarted(self):
         return self.timeStarted
@@ -57,6 +50,3 @@ class Task:
 
     def getIsWorking(self):
         return self.isWorking
-
-    def getIsResting(self):
-        return self.isResting
