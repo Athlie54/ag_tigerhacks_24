@@ -8,7 +8,8 @@ class mainController:
         self.sheepview = sheepview
 
     def openSheep(self):
-        self.sheepview.TransWindow()
+        self.sheepview.TransWindow('SheepAnimations\\', 'SheepEat.gif', 0, 3)
+        #self.sheepview.TransWindow('SheepAnimations\\', 'growth.gif', 3, 3)
 
     def openMainMenu(self):
         self.mainview.MainMenu()
