@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import *
+import win32api
 
 bg = '#ffa3bb'
 
@@ -21,15 +22,20 @@ class sheepViews():
         screen_height = window.winfo_screenheight()
         
         # Calculate window size based on screen size
-        window_size = int(screen_width / 20)
+        window_size = int(screen_width / 16)
         window.geometry(f'{window_size}x{window_size}')
+        
+        # Calculate position for bottom right corner
+        x_position = screen_width - window_size
+        y_position = screen_height - window_size
+        window.geometry(f'+{x_position}+{y_position}')
         
         # Resize the GIF frame
         resized_frame = current_gif_frame.zoom(window_size // 32, window_size // 32)
         canvas.create_image(10, 10, anchor=NW, image=resized_frame)
         
         resized_frame2 = tkinter.PhotoImage(file="SheepAnimations\\Shammy.png").zoom(window_size // 32, window_size // 32)
-        canvas.create_image(50, 50, anchor=NW, image=resized_frame2)
+        canvas.create_image(10, 10, anchor=NW, image=resized_frame2)
         
         # Keep the window on top
         window.attributes('-topmost', True)
