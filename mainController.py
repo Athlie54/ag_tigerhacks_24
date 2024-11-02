@@ -2,14 +2,18 @@
 import sheepViews
 import mainViews
 
-def openSheep():
-    sheepViews.SheepWindow
+class mainController:
+    def __init__(self,view):
+        self.view = view
 
-def openMainMenu():
-    mainViews.MainMenu
+    def openSheep():
+        sheepViews.SheepWindow
 
-def closeSheep():
-    sheepViews.window.quit
+    def openMainMenu():
+        mainViews.MainMenu
 
-def closeMainMenu():
-    mainViews.root.quit
+    def closeSheep():
+        sheepViews.window.quit
+
+    def closeMainMenu():
+        mainViews.root.quit

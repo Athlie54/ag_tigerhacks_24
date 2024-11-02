@@ -21,13 +21,17 @@ def checkForShammy(root,name):
 # main menu/view(s)
 def MainMenu():
     taskItem = tk.StringVar() # var to hold task
-    title = Label(root, text='Welcome to the Pomodoro Flock!').grid(row=0) # row 0 is just the top
-    query = Label(root, text='Name your sheep: ').grid(row=1)
+    title = Label(root, text='Welcome to the Pomodoro Flock!')
+    title.grid(row=0) # row 0 is just the top
+    query = Label(root, text='Name your sheep: ')
+    query.grid(row=1)
     sheepName = Entry(root)
     sheepName.grid(row=1,column=1) # query and sheepName are both row 1, but the name is next
     # to query so it has column 1
-    task = Label(root, text='Enter your task: ').grid(row=2)
-    taskEntry = Entry(root, textvariable=taskItem).grid(row=2,column=1)
+    task = Label(root, text='Enter your task: ')
+    task.grid(row=2)
+    taskEntry = Entry(root, textvariable=taskItem)
+    taskEntry.grid(row=2,column=1)
     
     # Time inputs. 2 small inline number inputs for minutes and hours in each with preset times of 25 and 5
     Label(root, text='Work time: ').grid(row=3)
@@ -52,9 +56,11 @@ def MainMenu():
     
     
 
-    quit = Button(root, text='EXIT', command=root.quit).grid(row=6,column=0)
-    go = Button(root, text='GO', command= lambda: checkForShammy(root,sheepName)).grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
+    quit = Button(root, text='EXIT', command=root.quit)
+    quit.grid(row=6,column=0)
+    go = Button(root, text='GO', command= lambda: checkForShammy(root,sheepName))
+    go.grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
     root.mainloop()
 
 
-MainMenu()
+#MainMenu()
