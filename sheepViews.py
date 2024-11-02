@@ -1,18 +1,19 @@
 # sheep window! sheep window!
 import tkinter
 from tkinter import *
+import win32api
 
-
+bg = '#ffa3bb'
 
 class sheepViews():
 
-    def WoolWindow(self):
+    def TransWindow(self):
         window = tkinter.Tk()
         path = 'SheepAnimations\\'
-        window.config(highlightbackground='#ffa3bb') 
-        label = tkinter.Label(window,bd=0,bg='#ffa3bb')
+        window.config(highlightbackground=bg) 
+        label = tkinter.Label(window,bd=0,bg=bg)
         window.overrideredirect(True)
-        window.wm_attributes('-transparentcolor','#ffa3bb') # make the background transparent based on hex code of the background color
+        window.wm_attributes('-transparentcolor',bg) # make the background transparent based on hex code of the background color
         animation = [tkinter.PhotoImage(file=path+'Growth.gif',format = 'gif -index %i' %(i)) for i in range(3)]#idle gif
         frame = animation[0]
         width = window.winfo_screenwidth()

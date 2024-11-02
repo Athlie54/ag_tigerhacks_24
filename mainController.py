@@ -8,7 +8,7 @@ class mainController:
         self.sheepview = sheepview
 
     def openSheep(self):
-        self.sheepview.WoolWindow()
+        self.sheepview.TransWindow()
 
     def openMainMenu(self):
         self.mainview.MainMenu()
