@@ -9,15 +9,28 @@ from tkinter import *
 # to the widgets in the window.
 
 root = Tk()
+taskList = list()
 
 # main menu/view(s)
-def mainMenu():
-    title = Label(root, text='Welcome to the Flock!').grid(row=0) # row 0 is just the top
+def MainMenu():
+    title = Label(root, text='Welcome to the Pomodoro Flock!').grid(row=0) # row 0 is just the top
     query = Label(root, text='Name your sheep: ').grid(row=1)
     sheepName = Entry(root).grid(row=1,column=1) # query and sheepName are both row 1, but the name is next
     # to query so it has column 1
-    done = Button(root, text='DONE', command = root.quit).grid(row=2)
+    tQuery = Label(root, text='What is your task?').grid(row=2, column=0)
+    task = Entry(root).grid(row=2,column=1)
+    
+    tlBox = Listbox(root).grid(row=3)
+    for t in taskList:
+        tlBox.insert(END,t)
+
+    newTask = Button(root, text='ADD', command=FillTaskList(task,taskList)).grid(row=6,column=0)
+
+    quit = Button(root, text='EXIT', command = root.quit).grid(row=6,column=1)
     root.mainloop()
 
+def FillTaskList(task, taskList):
+    taskList.append(str(task) + '\n')
 
-mainMenu()
+
+MainMenu()
