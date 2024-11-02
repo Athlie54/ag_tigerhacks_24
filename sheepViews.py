@@ -4,13 +4,15 @@ from tkinter import *
 import win32api
 
 bg = '#ffa3bb'
-animation_frames = [[tkinter.PhotoImage(file='SheepAnimations\\SheepEatBodyOnly.gif', format='gif -index %i' % i) for i in range(3)],
-                    [tkinter.PhotoImage(file='SheepAnimations\\growth.gif', format='gif -index %i' % i) for i in range(3)],
-                    [tkinter.PhotoImage(file='SheepAnimations\\SheepEatHeadOnly.gif', format='gif -index %i' % i) for i in range(3)]]
+#animation_frames = [[tkinter.PhotoImage(file='SheepAnimations\\SheepEatBodyOnly.gif', format='gif -index %i' % i) for i in range(3)],
+#                    [tkinter.PhotoImage(file='SheepAnimations\\growth.gif', format='gif -index %i' % i) for i in range(3)],
+#                    [tkinter.PhotoImage(file='SheepAnimations\\SheepEatHeadOnly.gif', format='gif -index %i' % i) for i in range(3)]]
 
 class sheepViews():
+    def __init__(self,gif_path,gif_file_name,total_frames):
+        self.animation_frames = [tkinter.PhotoImage(file=gif_path + gif_file_name, format='gif -index %i' % i) for i in range(total_frames)]
 
-    def TransWindow(self, gif_path, gif_file_name, current_frame, total_frames,layer):
+    def TransWindow(self, current_frame):
         window = tkinter.Tk()
         window.config(highlightbackground=bg) 
         label = tkinter.Label(window, bd=0, bg=bg)
@@ -19,7 +21,7 @@ class sheepViews():
         
         # Load the GIF frames
         #animation_frames = [tkinter.PhotoImage(file=gif_path + gif_file_name, format='gif -index %i' % i) for i in range(total_frames)]
-        current_gif_frame = animation_frames[layer][current_frame]
+        current_gif_frame = self.animation_frames[current_frame]
         
         # Get screen dimensions
         screen_width = window.winfo_screenwidth()
