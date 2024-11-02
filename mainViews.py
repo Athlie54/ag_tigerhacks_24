@@ -27,12 +27,12 @@ class mainViews():
         query = Label(root, text='Name your sheep: ')
         query.grid(row=1)
         sheepName = Entry(root)
-        sheepName.grid(row=1,column=1) # query and sheepName are both row 1, but the name is next
+        sheepName.grid(row=1,column=1, columnspan=4) # query and sheepName are both row 1, but the name is next
         # to query so it has column 1
         task = Label(root, text='Enter your task: ')
         task.grid(row=2)
         taskEntry = Entry(root, textvariable=taskItem)
-        taskEntry.grid(row=2,column=1)
+        taskEntry.grid(row=2,column=1,columnspan=4)
         
         # Time inputs. 2 small inline number inputs for minutes and hours in each with preset times of 25 and 5
         Label(root, text='Work time: ').grid(row=3)
