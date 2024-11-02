@@ -4,10 +4,13 @@ from tkinter import *
 import win32api
 
 bg = '#ffa3bb'
+animation_frames = [[tkinter.PhotoImage(file='SheepAnimations\\SheepEatBodyOnly.gif', format='gif -index %i' % i) for i in range(3)],
+                    [tkinter.PhotoImage(file='SheepAnimations\\growth.gif', format='gif -index %i' % i) for i in range(3)],
+                    [tkinter.PhotoImage(file='SheepAnimations\\SheepEatHeadOnly.gif', format='gif -index %i' % i) for i in range(3)]]
 
 class sheepViews():
 
-    def TransWindow(self, gif_path, gif_file_name, current_frame, total_frames):
+    def TransWindow(self, gif_path, gif_file_name, current_frame, total_frames,layer):
         window = tkinter.Tk()
         window.config(highlightbackground=bg) 
         label = tkinter.Label(window, bd=0, bg=bg)
@@ -15,8 +18,8 @@ class sheepViews():
         window.wm_attributes('-transparentcolor', bg)  # make the background transparent based on hex code of the background color
         
         # Load the GIF frames
-        animation_frames = [tkinter.PhotoImage(file=gif_path + gif_file_name, format='gif -index %i' % i) for i in range(total_frames)]
-        current_gif_frame = animation_frames[current_frame]
+        #animation_frames = [tkinter.PhotoImage(file=gif_path + gif_file_name, format='gif -index %i' % i) for i in range(total_frames)]
+        current_gif_frame = animation_frames[layer][current_frame]
         
         # Get screen dimensions
         screen_width = window.winfo_screenwidth()
