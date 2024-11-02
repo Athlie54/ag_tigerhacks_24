@@ -9,7 +9,15 @@ from tkinter import *
 # If we don't like this option, there is also pack(), which operates more relative
 # to the widgets in the window.
 
+root = Tk()
+
 class mainViews():
+    def __init__(self):
+        self.controller = None
+        #self.go = Button(root, text='GO')
+
+    def setController(self,controller):
+        self.controller = controller
 
     def checkForShammy(root,name):
         print(name.get())
@@ -19,7 +27,6 @@ class mainViews():
 
     # main menu/view(s)
     def MainMenu(self):
-        root = Tk()
         taskList = list()
         taskItem = tk.StringVar() # var to hold task
         title = Label(root, text='Welcome to the Pomodoro Flock!')
@@ -59,7 +66,8 @@ class mainViews():
 
         quit = Button(root, text='EXIT', command=root.quit)
         quit.grid(row=6,column=0)
-        go = Button(root, text='GO')
+        go = Button(root, text='GO',command=self.controller.openSheep)
+        #self.go.config(command=self.controller.openSheep)
         go.grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
         root.mainloop()
 
