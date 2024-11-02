@@ -33,7 +33,22 @@ class sheepViews():
         
         # Keep the window on top
         window.attributes('-topmost', True)
+
         
+        # right-click menu (to return to mainViews)
+        sheepMenu = Menu(window, tearoff=0, bg='lightgreen')
+        sheepMenu.add_command(label="Return to Main Menu")
+        sheepMenu.add_separator
+        sheepMenu.add_command(label="Temp-hide (15 secs)")
+
+        def popup(event):
+            try:
+                sheepMenu.tk_popup(event.x_root, event.y_root)
+            finally:
+                sheepMenu.grab_release()
+        
+        window.bind("<Button-3>",popup)
+
         window.mainloop()
 
 # Example usage
