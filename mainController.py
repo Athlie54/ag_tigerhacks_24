@@ -3,17 +3,18 @@ import sheepViews
 import mainViews
 
 class mainController:
-    def __init__(self,view):
-        self.view = view
+    def __init__(self,mainview,sheepview):
+        self.mainview = mainview
+        self.sheepview = sheepview
 
-    def openSheep():
-        sheepViews.SheepWindow
+    def openSheep(self):
+        self.sheepview.SheepWindow()
 
-    def openMainMenu():
-        mainViews.MainMenu
+    def openMainMenu(self):
+        self.mainview.MainMenu()
 
-    def closeSheep():
-        sheepViews.window.quit
+    def closeSheep(self):
+        self.sheepview.window.quit
 
-    def closeMainMenu():
-        mainViews.root.quit
+    def closeMainMenu(self):
+        self.mainview.root.quit
