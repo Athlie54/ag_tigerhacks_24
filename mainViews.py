@@ -19,6 +19,7 @@ def MainMenu():
     # to query so it has column 1
     tQuery = Label(root, text='What is your task?').grid(row=2, column=0)
     task = Entry(root).grid(row=2,column=1)
+    tString = task.get()
     
     tlBox = Listbox(root).grid(row=3)
     for t in taskList:
