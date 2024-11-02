@@ -6,14 +6,13 @@ from tkinter import *
 
 class sheepViews():
 
-    def SheepWindow(self):
+    def WoolWindow(self):
         window = tkinter.Tk()
         path = 'SheepAnimations\\'
         window.config(highlightbackground='#ffa3bb') 
         label = tkinter.Label(window,bd=0,bg='#ffa3bb')
         window.overrideredirect(True)
         window.wm_attributes('-transparentcolor','#ffa3bb') # make the background transparent based on hex code of the background color
-        label.pack()
         animation = [tkinter.PhotoImage(file=path+'Growth.gif',format = 'gif -index %i' %(i)) for i in range(3)]#idle gif
         frame = animation[0]
         width = window.winfo_screenwidth()
@@ -22,7 +21,9 @@ class sheepViews():
         window.geometry(str(int(width/20))+'x'+str(int(width/20))) #GROSS.
         bigFrame = frame.zoom(int((width/20)/32),int((width/20)/32))
         label.configure(image=bigFrame)
+        label.pack()
         window.mainloop()
         #make it stay on top
 
+    # def bodyWindow(self):
     # SheepWindow()
