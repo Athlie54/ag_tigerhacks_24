@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import *
-import mainController
 
 # Label: Just text, there is an option called Message but it just does the same thing.
 # Entry: Just an empty box to be filled, can be referenced in commands.
@@ -13,12 +12,19 @@ import mainController
 root = Tk()
 taskList = list()
 
+def checkForShammy(root,name):
+    print(name.get())
+    if(name.get() == "Shammy"):
+        shammy = PhotoImage(file='SheepAnimations\\Shammy.png')
+        root.iconphoto(True,shammy)
+
 # main menu/view(s)
 def MainMenu():
     taskItem = tk.StringVar() # var to hold task
     title = Label(root, text='Welcome to the Pomodoro Flock!').grid(row=0) # row 0 is just the top
     query = Label(root, text='Name your sheep: ').grid(row=1)
-    sheepName = Entry(root).grid(row=1,column=1) # query and sheepName are both row 1, but the name is next
+    sheepName = Entry(root)
+    sheepName.grid(row=1,column=1) # query and sheepName are both row 1, but the name is next
     # to query so it has column 1
     task = Label(root, text='Enter your task: ').grid(row=2)
     taskEntry = Entry(root, textvariable=taskItem).grid(row=2,column=1)
@@ -47,7 +53,7 @@ def MainMenu():
     
 
     quit = Button(root, text='EXIT', command=root.quit).grid(row=6,column=0)
-    go = Button(root, text='GO').grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
+    go = Button(root, text='GO', command= lambda: checkForShammy(root,sheepName)).grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
     root.mainloop()
 
 

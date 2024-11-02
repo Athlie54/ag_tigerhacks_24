@@ -1,7 +1,6 @@
 # sheep window! sheep window!
 import tkinter
 from tkinter import *
-import mainController
 
 window = tkinter.Tk()
 path = 'SheepAnimations\\'
