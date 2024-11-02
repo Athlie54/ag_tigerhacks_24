@@ -25,4 +25,4 @@ def SheepWindow():
     window.mainloop()
     #make it stay on top
 
-SheepWindow()
+# SheepWindow()

@@ -46,8 +46,8 @@ def MainMenu():
     
     
 
-    quit = Button(root, text='EXIT', command = mainController.closeMainMenu).grid(row=6,column=0)
-    go = Button(root, text='GO',command=mainController.openSheep()).grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
+    quit = Button(root, text='EXIT', command=root.quit).grid(row=6,column=0)
+    go = Button(root, text='GO').grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
     root.mainloop()
 
 
