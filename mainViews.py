@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+import mainController
 
 # Label: Just text, there is an option called Message but it just does the same thing.
 # Entry: Just an empty box to be filled, can be referenced in commands.
@@ -45,8 +46,8 @@ def MainMenu():
     
     
 
-    quit = Button(root, text='EXIT', command = root.quit).grid(row=6,column=0)
-    go = Button(root, text='GO').grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
+    quit = Button(root, text='EXIT', command = mainController.closeMainMenu).grid(row=6,column=0)
+    go = Button(root, text='GO',command=mainController.openSheep()).grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
     root.mainloop()
 
 
