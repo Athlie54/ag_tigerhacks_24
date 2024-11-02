@@ -36,6 +36,6 @@ class sheepViews():
         
         window.mainloop()
 
-# Example usage 
+# Example usage
 # sheep_view = sheepViews()
 # sheep_view.TransWindow('path_to_gif/', 'gif_file_name.gif', 0, 10)
