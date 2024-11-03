@@ -31,6 +31,11 @@ class sheepViews():
         resized_frame2 = tkinter.PhotoImage(file="SheepAnimations\\Shammy.png").zoom(window_size // 32, window_size // 32)
         canvas.create_image(10, 10, anchor=NW, image=resized_frame2)
         
+        # Position the window at the bottom right corner, above the taskbar and slightly to the left
+        x_position = screen_width - window_size - 50  # 50 pixels to the left
+        y_position = screen_height - window_size - 30  # 30 pixels above the taskbar
+        window.geometry(f'+{x_position}+{y_position}')
+        
         # Keep the window on top
         window.attributes('-topmost', True)
 
@@ -38,7 +43,7 @@ class sheepViews():
         # right-click menu (to return to mainViews)
         sheepMenu = Menu(window, tearoff=0, bg='lightgreen')
         sheepMenu.add_command(label="Return to Main Menu")
-        sheepMenu.add_separator
+        sheepMenu.add_separator()
         sheepMenu.add_command(label="Temp-hide (15 secs)")
 
         def popup(event):
@@ -47,7 +52,7 @@ class sheepViews():
             finally:
                 sheepMenu.grab_release()
         
-        window.bind("<Button-3>",popup)
+        window.bind("<Button-3>", popup)
 
         window.mainloop()
 
