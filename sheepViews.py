@@ -32,7 +32,7 @@ class sheepViews():
         self.window.wm_attributes('-transparentcolor', bg)
         self.window.overrideredirect(True)
         # Load frames for the first GIF
-        animation_frames1 = [self.layer1[indexLayer1]]
+        #animation_frames1 = [self.layer1[indexLayer1]]
         # frame_index = 0
         # while True:
         #     try:
@@ -43,7 +43,7 @@ class sheepViews():
         #         break
 
         # Load frames for the second GIF
-        animation_frames2 = [self.layer2[indexLayer2]]
+        #animation_frames2 = [self.layer2[indexLayer2]]
         # frame_index = 0
         # while True:
         #     try:
@@ -54,7 +54,7 @@ class sheepViews():
         #         break
 
         # Load frames for the third GIF
-        animation_frames3 = [self.layer3[indexLayer3]]
+        #animation_frames3 = [self.layer3[indexLayer3]]
         # frame_index = 0
         # while True:
         #     try:
