@@ -16,5 +16,5 @@ if __name__ == '__main__':
     maincontroller.openSheep()
     #here's the sheep doin a little dance using the animation controller
     animation = animationController.animationController(sheepView)
-    time.sleep(2)
-    animation.SheepGrowth(3)
+    while True:
+        sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0, "TransSheep\\", "GrowthTrans.gif", i/5, "TransSheep\\", "SheepEatHeadTrans.gif", i)

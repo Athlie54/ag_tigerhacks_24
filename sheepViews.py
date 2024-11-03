@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import *
+import time
 import os
 
 bg = '#ffa3ba'
@@ -74,6 +75,7 @@ class sheepViews():
         resized_frame3 = current_gif_frame3.zoom(window_size // 32, window_size // 32)
         canvas.create_image(10, 10, anchor=NW, image=resized_frame3)
         
+        
         # Position window in bottom right corner
         x_position = screen_width - window_size - 50
         y_position = screen_height - window_size - 30
@@ -100,7 +102,10 @@ class sheepViews():
         
         window.bind("<Button-3>", popup)
 
-        window.mainloop()
+        
+        window.update_idletasks()
+        window.update()
+        
 
 # Example usage
 # sheep_view = sheepViews()
