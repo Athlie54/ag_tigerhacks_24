@@ -48,6 +48,7 @@ class animationController:
             self.setLayer3("TransSheep\\", "SheepEatHeadTrans.gif", i)
             self.blastLayersToSheep()
             time.sleep(self.waitTime)
+            
         self.SheepIdle()
         
     def SheepShocked(self):
