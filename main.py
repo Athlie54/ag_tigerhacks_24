@@ -19,8 +19,8 @@ if __name__ == '__main__':
 
     
     while True:
-        sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0, "TransSheep\\", "GrowthTrans.gif", 2, "TransSheep\\", "SheepEatHeadTrans.gif", 0)
+        sheepView.TransWindow(0, 2, 0)
         time.sleep(1)
         for i in range(15):
-            sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0, "TransSheep\\", "GrowthTrans.gif", i/5, "TransSheep\\", "SheepEatHeadTrans.gif", i)
+            sheepView.TransWindow(0, i/5, i)
             time.sleep(1)
