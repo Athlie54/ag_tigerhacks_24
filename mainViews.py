@@ -21,10 +21,11 @@ class mainViews():
     def setController(self,controller):
         self.controller = controller
 
-    def checkForShammy(self,name):
+    def checkForShammy(self):
         root=self.window
-        print(name.get())
-        if(name.get() == "Shammy"):
+        sheep = self.getSheep()
+        print(sheep)
+        if(sheep == "Shammy"):
             shammy = PhotoImage(file='SheepAnimations\\Shammy.png')
             root.iconphoto(True,shammy)
 
@@ -35,7 +36,7 @@ class mainViews():
         print(self.sheep)
         print(self.workTime)
         self.setRestTime((rHrs*3600)+(rMins*60))
-        self.checkForShammy(sheep)
+        self.checkForShammy()
 
     # main menu/view(s)
     def MainMenu(self):
@@ -93,6 +94,9 @@ class mainViews():
 
     def setSheep(self,sheep):
         self.sheep=sheep
+
+    def getSheep(self):
+        return self.sheep
 
     def setTask(self,task):
         self.task=task
