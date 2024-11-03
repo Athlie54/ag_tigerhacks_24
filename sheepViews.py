@@ -14,16 +14,16 @@ class sheepViews():
         self.window.wm_attributes('-transparentcolor', bg)
         self.window.overrideredirect(True)
         
-        self.layer1_1 = (self.window.PhotoImage(file="TransSheep\\SheepEatBodyTrans.gif",format = 'gif -index %i' %(i)) for i in range(1))
-        self.layer1_2 = (self.window.PhotoImage(file="TransSheep\\SheepEatTrans.gif",format = 'gif -index %i' %(i)) for i in range(1))
-        self.layer1_3 = (self.window.PhotoImage(file="TransSheep\\ShockedSheep.gif",format = 'gif -index %i' %(i)) for i in range(24))
+        self.layer1_1 = [tkinter.PhotoImage(file="TransSheep\\SheepEatBodyTrans.gif",format = 'gif -index %i' %(i)) for i in range(1)]
+        self.layer1_2 = [tkinter.PhotoImage(file="TransSheep\\SheepEatTrans.gif",format = 'gif -index %i' %(i)) for i in range(1)]
+        self.layer1_3 = [tkinter.PhotoImage(file="TransSheep\\ShockedSheepTrans.gif",format = 'gif -index %i' %(i)) for i in range(24)]
         self.layer1 = [self.layer1_1]+[self.layer1_2]+[self.layer1_3]
         
-        self.layer2_1 = (self.window.PhotoImage(file="TransSheep\\GrowthTrans.gif",format = 'gif -index %i' %(i)) for i in range(3))
+        self.layer2_1 = [tkinter.PhotoImage(file="TransSheep\\GrowthTrans.gif",format = 'gif -index %i' %(i)) for i in range(3)]
         self.layer2 = [self.layer2_1]
         
-        self.layer3_1 = (self.window.PhotoImage(file="TransSheep\\SheepEatHeadTrans.gif",format = 'gif -index %i' %(i)) for i in range(15))
-        self.layer3_2 = (self.window.PhotoImage(file="TransSheep\\LightningTrans.gif",format = 'gif -index %i' %(i)) for i in range(18))
+        self.layer3_1 = [tkinter.PhotoImage(file="TransSheep\\SheepEatHeadTrans.gif",format = 'gif -index %i' %(i)) for i in range(15)]
+        self.layer3_2 = [tkinter.PhotoImage(file="TransSheep\\LightningTrans.gif",format = 'gif -index %i' %(i)) for i in range(18)]
         self.layer3 = [self.layer3_1]+[self.layer3_2]#"TransSheep\\", "SheepEatHeadTrans.gif", 0
 
     def setController(self,controller):
@@ -36,7 +36,7 @@ class sheepViews():
         while True:
             try:
                 frame = self.layer1[indexLayer1] #tkinter.PhotoImage(file=gif_path + gif_file_name, format='gif -index %i' % frame_index)
-                animation_frames1.append(frame.subsample(1, 1))
+                animation_frames1.append(frame)#.subsample(1, 1)
                 frame_index += 1
             except tkinter.TclError:
                 break
@@ -47,7 +47,7 @@ class sheepViews():
         while True:
             try:
                 frame = self.layer2[indexLayer2] #tkinter.PhotoImage(file=gif_path2 + gif_file_name2, format='gif -index %i' % frame_index)
-                animation_frames2.append(frame.subsample(1, 1))
+                animation_frames2.append(frame)#.subsample(1, 1)
                 frame_index += 1
             except tkinter.TclError:
                 break
@@ -58,7 +58,7 @@ class sheepViews():
         while True:
             try:
                 frame = self.layer3[indexLayer3] #tkinter.PhotoImage(file=gif_path3 + gif_file_name3, format='gif -index %i' % frame_index)
-                animation_frames3.append(frame.subsample(1, 1))
+                animation_frames3.append(frame)#.subsample(1, 1)
                 frame_index += 1
             except tkinter.TclError:
                 break
