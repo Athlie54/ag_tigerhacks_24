@@ -22,6 +22,11 @@ class Task:
                 self.restStart = time.time()
                 self.rest()
 
+    def stateCycles(self):
+        state=0
+        while True:
+            state=self.setState(state)
+
     # rest will run for the given rest time, and then return the signal to change to work
     def rest(self):
         self.isWorking = False
