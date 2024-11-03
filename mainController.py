@@ -28,6 +28,7 @@ class mainController:
 
     def setTaskAndSheep(self,sheep,task,workTime,breakTime):
         self.currentTask = taskClass.Task(task,workTime,breakTime)
+        print("Going!")
         self.currentSheep = sheepClass.Sheep(sheep)
         #self.closeMainMenu() # fix this one
         #self.openSheep()
