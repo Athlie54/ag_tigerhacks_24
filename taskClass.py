@@ -1,35 +1,38 @@
 # task class, gets the task name, time to work, time to rest
 
-import datetime
+import time
 
 class Task:
     def __init__(self, taskName, timeToWork, timeToRest):
         self.taskName = taskName
         self.timeToWork = timeToWork
         self.timeToRest = timeToRest
-        self.timeStarted = datetime.datetime.now()
-        self.timeRemaining = None
-        self.timeEnded = None
+        self.workStart = 0
+        # self.timeRemaining = 0
+        self.restStart = 0
         self.isWorking = True
         #print(self.taskName,self.timeToWork,self.timeToRest)
 
-    def start(self):
-        self.timeStarted = datetime.datetime.now()
-        self.timeRemaining = self.timeToWork
-        self.isWorking = True
+    # if param given is 0, then user is working; if 1, user is resting
+    def setState(self, state):
+            if(state==0): # working
+                self.workStart = time.time()
+                self.work()
+            elif(state==1): # resting
+                self.restStart = time.time()
+                self.rest()
 
-    def stop(self):
-        self.timeEnded = datetime.datetime.now()
-        self.timeRemaining = None
-        self.isWorking = False
 
     def rest(self):
         self.isWorking = False
-        self.timeRemaining = self.timeToRest
+        # self.timeRemaining = self.timeToRest
+        time.sleep(self.getTimeToRest())
+
 
     def work(self):
         self.isWorking = True
-        self.timeRemaining = self.timeToWork
+        # self.timeRemaining = self.timeToWork
+        time.sleep(self.getTimeToWork())
 
     def getTaskName(self):
         return self.taskName
@@ -40,14 +43,15 @@ class Task:
     def getTimeToRest(self):
         return self.timeToRest
 
-    def getTimeRemaining(self):
-        return self.timeRemaining
+    # def getTimeRemaining(self):
+    #     return self.timeRemaining
 
-    def getTimeStarted(self):
-        return self.timeStarted
+    def getWorkStart (self):
+        return self.workStart
 
-    def getTimeEnded(self):
-        return self.timeEnded
+    def getRestStart (self):
+        return self.restStart
 
     def getIsWorking(self):
         return self.isWorking
+
