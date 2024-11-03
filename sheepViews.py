@@ -1,11 +1,13 @@
 import tkinter
 from tkinter import *
+import os
 
-bg = '#ffa3bb'
+
+bg = '#ffa3ba'
 
 class sheepViews():
 
-    def TransWindow(self, gif_path, gif_file_name, current_frame, total_frames):
+    def TransWindow(self, gif_path, gif_file_name, current_frame):
         window = tkinter.Tk()
         canvas = tkinter.Canvas(window, width=200, height=100, bg=bg, highlightthickness=0)
         canvas.pack(fill="both", expand=True)
@@ -13,7 +15,16 @@ class sheepViews():
         window.overrideredirect(True)
         
         # Load the GIF frames
-        animation_frames = [tkinter.PhotoImage(file=gif_path + gif_file_name, format='gif -index %i' % i) for i in range(total_frames)]
+        animation_frames = []
+        frame_index = 0
+        while True:
+            try:
+                frame = tkinter.PhotoImage(file=gif_path + gif_file_name, format='gif -index %i' % frame_index)
+                animation_frames.append(frame.subsample(1, 1))  # Ensure full frames are rendered
+                frame_index += 1
+            except tkinter.TclError:
+                break
+        
         current_gif_frame = animation_frames[current_frame]
         
         # Get screen dimensions
