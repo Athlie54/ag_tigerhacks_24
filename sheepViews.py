@@ -69,9 +69,12 @@ class sheepViews():
         # Get screen dimensions
         screen_width = self.window.winfo_screenwidth()
         screen_height = self.window.winfo_screenheight()
+        screen_width = self.window.winfo_screenwidth()
+        screen_height = self.window.winfo_screenheight()
         
         # Calculate window size
         window_size = int(screen_width / 16)
+        self.window.geometry(f'{window_size}x{window_size}')
         self.window.geometry(f'{window_size}x{window_size}')
         
         # Resize and display each GIF layer
@@ -89,11 +92,14 @@ class sheepViews():
         x_position = screen_width - window_size - 50
         y_position = screen_height - window_size - 30
         self.window.geometry(f'+{x_position}+{y_position}')
+        self.window.geometry(f'+{x_position}+{y_position}')
         
         # Keep window on top
         self.window.attributes('-topmost', True)
+        self.window.attributes('-topmost', True)
         
         # Right-click menu
+        sheepMenu = Menu(self.window, tearoff=0, bg='lightgreen')
         sheepMenu = Menu(self.window, tearoff=0, bg='lightgreen')
         sheepMenu.add_command(label="Return to Main Menu", command=self.controller.openMainMenu)
         sheepMenu.add_separator()

@@ -3,6 +3,7 @@ import sheepViews
 import mainViews
 import taskClass
 import sheepClass
+from tkinter import *
 
 class mainController:
     def __init__(self,mainview,sheepview):
@@ -18,7 +19,8 @@ class mainController:
         self.mainview.MainMenu()
 
     def closeSheep(self):
-        self.sheepview.window.quit
+        sView = Tk(self.sheepview.window)
+        sView.quit
 
     def closeMainMenu(self):
         self.mainview.root.quit
