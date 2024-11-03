@@ -4,23 +4,30 @@ import mainViews
 import mainController
 import sheepViews
 import animationController
-import time
-
 
 if __name__ == '__main__':
+    window = tkinter.Tk()
     mainView = mainViews.mainViews()
-    sheepView = sheepViews.sheepViews()
+    sheepView = sheepViews.sheepViews(window)
     maincontroller = mainController.mainController(mainView, sheepView)
     mainView.setController(maincontroller)
     sheepView.setController(maincontroller)
-    #maincontroller.openSheep()
-    #here's the sheep doin a little dance using the animation controller
     animation = animationController.animationController(sheepView)
-
     
-    while True:
-        sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0, "TransSheep\\", "GrowthTrans.gif", 2, "TransSheep\\", "SheepEatHeadTrans.gif", 0)
-        time.sleep(1)
-        for i in range(15):
-            sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0, "TransSheep\\", "GrowthTrans.gif", i/5, "TransSheep\\", "SheepEatHeadTrans.gif", i)
-            time.sleep(1)
+    def update_sheep():
+        sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0,
+                              "TransSheep\\", "GrowthTrans.gif", 2,
+                              "TransSheep\\", "SheepEatHeadTrans.gif", 0)
+        window.after(1000, update_sheep_sequence, 0)
+
+    def update_sheep_sequence(i):
+        if i < 15:
+            sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0,
+                                  "TransSheep\\", "GrowthTrans.gif", 1,
+                                  "TransSheep\\", "SheepEatHeadTrans.gif", i)
+            window.after(1000, update_sheep_sequence, i + 1)
+        else:
+            window.after(1000, update_sheep)
+
+    update_sheep()
+    window.mainloop()

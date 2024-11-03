@@ -6,18 +6,18 @@ import os
 bg = '#ffa3ba'
 
 class sheepViews():
-    def __init__(self):
+    def __init__(self, parent_window):
         self.controller = None
+        self.canvas = tkinter.Canvas(parent_window, width=200, height=100, bg=bg, highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        parent_window.wm_attributes('-transparentcolor', bg)
+        parent_window.overrideredirect(True)
 
     def setController(self,controller):
         self.controller = controller
         
     def TransWindow(self, gif_path, gif_file_name, current_frame, gif_path2, gif_file_name2, current_frame2, gif_path3, gif_file_name3, current_frame3):
-        window = tkinter.Tk()
-        canvas = tkinter.Canvas(window, width=200, height=100, bg=bg, highlightthickness=0)
-        canvas.pack(fill="both", expand=True)
-        window.wm_attributes('-transparentcolor', bg)
-        window.overrideredirect(True)
+        self.canvas.delete("all")
         
         # Load frames for the first GIF
         animation_frames1 = []
@@ -58,34 +58,24 @@ class sheepViews():
         current_gif_frame3 = animation_frames3[current_frame3]
         
         # Get screen dimensions
-        screen_width = window.winfo_screenwidth()
-        screen_height = window.winfo_screenheight()
+        screen_width = self.canvas.winfo_screenwidth()
+        screen_height = self.canvas.winfo_screenheight()
         
         # Calculate window size
         window_size = int(screen_width / 16)
-        window.geometry(f'{window_size}x{window_size}')
         
         # Resize and display each GIF layer
         resized_frame1 = current_gif_frame1.zoom(window_size // 32, window_size // 32)
-        canvas.create_image(10, 10, anchor=NW, image=resized_frame1)
+        self.canvas.create_image(10, 10, anchor=NW, image=resized_frame1)
 
         resized_frame2 = current_gif_frame2.zoom(window_size // 32, window_size // 32)
-        canvas.create_image(10, 10, anchor=NW, image=resized_frame2)
+        self.canvas.create_image(10, 10, anchor=NW, image=resized_frame2)
 
         resized_frame3 = current_gif_frame3.zoom(window_size // 32, window_size // 32)
-        canvas.create_image(10, 10, anchor=NW, image=resized_frame3)
-        
-        
-        # Position window in bottom right corner
-        x_position = screen_width - window_size - 50
-        y_position = screen_height - window_size - 30
-        window.geometry(f'+{x_position}+{y_position}')
-        
-        # Keep window on top
-        window.attributes('-topmost', True)
+        self.canvas.create_image(10, 10, anchor=NW, image=resized_frame3)
         
         # Right-click menu
-        sheepMenu = Menu(window, tearoff=0, bg='lightgreen')
+        sheepMenu = Menu(self.canvas, tearoff=0, bg='lightgreen')
         sheepMenu.add_command(label="Return to Main Menu", command=self.controller.openMainMenu)
         sheepMenu.add_separator()
         sheepMenu.add_command(label="Temp-hide (15 secs)")#command=self.controller.tempHideSheep
@@ -100,11 +90,11 @@ class sheepViews():
             finally:
                 sheepMenu.grab_release()
         
-        window.bind("<Button-3>", popup)
+        self.canvas.bind("<Button-3>", popup)
 
         
-        window.update_idletasks()
-        window.update()
+        self.canvas.update_idletasks()
+        self.canvas.update()
         
 
 # Example usage
