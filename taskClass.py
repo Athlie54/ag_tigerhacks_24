@@ -22,17 +22,19 @@ class Task:
                 self.restStart = time.time()
                 self.rest()
 
-
+    # rest will run for the given rest time, and then return the signal to change to work
     def rest(self):
         self.isWorking = False
         # self.timeRemaining = self.timeToRest
         time.sleep(self.getTimeToRest())
+        return 0
 
-
+    # work will run for the given work time, and then return the signal to change to rest
     def work(self):
         self.isWorking = True
         # self.timeRemaining = self.timeToWork
         time.sleep(self.getTimeToWork())
+        return 1
 
     def getTaskName(self):
         return self.taskName
