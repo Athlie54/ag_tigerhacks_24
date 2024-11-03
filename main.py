@@ -21,6 +21,3 @@ if __name__ == '__main__':
     while True:
         sheepView.TransWindow(0, 2, 0)
         time.sleep(1)
-        for i in range(15):
-            sheepView.TransWindow(0, i/5, i)
-            time.sleep(1)
