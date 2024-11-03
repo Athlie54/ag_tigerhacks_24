@@ -1,4 +1,3 @@
-import sheepViews
 import time
 
 class animationController:
