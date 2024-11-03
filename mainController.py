@@ -28,10 +28,11 @@ class mainController:
         mainRoot.quit()
 
     def setTaskAndSheep(self,sheep,task,workTime,breakTime):
-        self.currentTask = taskClass.Task(task,workTime,breakTime)
+        cTask = taskClass.Task(task,workTime,breakTime)
+        self.currentTask = cTask
         print("Going!")
         self.currentSheep = sheepClass.Sheep(sheep)
-        #self.closeMainMenu() # fix this one
+        self.closeMainMenu() # fix this one
         #self.openSheep()
 
     #def tempHideSheep(self):
