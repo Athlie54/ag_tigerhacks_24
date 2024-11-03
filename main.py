@@ -21,10 +21,12 @@ if __name__ == '__main__':
     mainView = mainViews.mainViews()
     sheepView = sheepViews.sheepViews(root)
     maincontroller = mainController.mainController(mainView, sheepView)
-    
+    animationcontroller = animationController.animationController(sheepView)
+
     mainView.setController(maincontroller)
     sheepView.setController(maincontroller)
-    
+    sheepView.setAnimationController(animationcontroller)
+
     mainView.MainMenu()
     # Start the animation loop with initial frame indexes
     update_animation(root, sheepView, [0,0,0])

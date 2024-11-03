@@ -8,6 +8,7 @@ bg = '#ffa3ba'
 class sheepViews():
     def __init__(self, parent_window):
         self.controller = None
+        self.animationController = None
         self.window = parent_window
         
         # Load image layers
@@ -41,6 +42,9 @@ class sheepViews():
     def setController(self, controller):
         self.controller = controller
         
+    def setAnimationController(self,controller):
+        self.animationController = controller
+
     def setup_menu(self):
         sheepMenu = Menu(self.window, tearoff=0, bg='lightgreen')
         sheepMenu.add_command(label="Return to Main Menu", command=lambda: self.controller.openMainMenu())
