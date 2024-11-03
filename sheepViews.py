@@ -1,6 +1,5 @@
 import tkinter
 from tkinter import *
-import win32api
 
 bg = '#ffa3bb'
 
@@ -24,11 +23,6 @@ class sheepViews():
         # Calculate window size based on screen size
         window_size = int(screen_width / 16)
         window.geometry(f'{window_size}x{window_size}')
-        
-        # Calculate position for bottom right corner
-        x_position = screen_width - window_size
-        y_position = screen_height - window_size
-        window.geometry(f'+{x_position}+{y_position}')
         
         # Resize the GIF frame
         resized_frame = current_gif_frame.zoom(window_size // 32, window_size // 32)
