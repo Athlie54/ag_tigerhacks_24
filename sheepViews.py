@@ -19,10 +19,12 @@ class sheepViews():
         self.layer1_3 = (self.window.PhotoImage(file="TransSheep\\ShockedSheep.gif",format = 'gif -index %i' %(i)) for i in range(24))
         self.layer1 = [self.layer1_1]+[self.layer1_2]+[self.layer1_3]
         
-        self.layer2 = [self.window.PhotoImage(file="TransSheep\\GrowthTrans.gif",format = 'gif -index %i' %(i)) for i in range(3)]
+        self.layer2_1 = (self.window.PhotoImage(file="TransSheep\\GrowthTrans.gif",format = 'gif -index %i' %(i)) for i in range(3))
+        self.layer2 = [self.layer2_1]
         
-        self.layer3 = [self.window.PhotoImage(file="TransSheep\\SheepEatHeadTrans.gif",format = 'gif -index %i' %(i)) for i in range(15)]+[#"TransSheep\\", "SheepEatHeadTrans.gif", 0
-            self.window.PhotoImage(file="TransSheep\\LightningTrans.gif",format = 'gif -index %i' %(i)) for i in range(18)]
+        self.layer3_1 = (self.window.PhotoImage(file="TransSheep\\SheepEatHeadTrans.gif",format = 'gif -index %i' %(i)) for i in range(15))
+        self.layer3_2 = (self.window.PhotoImage(file="TransSheep\\LightningTrans.gif",format = 'gif -index %i' %(i)) for i in range(18))
+        self.layer3 = [self.layer3_1]+[self.layer3_2]#"TransSheep\\", "SheepEatHeadTrans.gif", 0
 
     def setController(self,controller):
         self.controller = controller
