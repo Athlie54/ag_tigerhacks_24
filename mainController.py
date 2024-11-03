@@ -28,3 +28,14 @@ class mainController:
         self.currentSheep = sheepClass.Sheep(sheep)
         #self.closeMainMenu() # fix this one
         #self.openSheep()
+
+    #def tempHideSheep(self):
+        #self.sheepview. #something
+    
+    def completeTask(self):
+        self.currentTask = None
+        self.currentSheep = None
+        self.closeSheep()
+        self.openMainMenu()
+    
+    

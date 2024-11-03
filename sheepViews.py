@@ -5,6 +5,12 @@ import os
 bg = '#ffa3ba'
 
 class sheepViews():
+    def __init__(self):
+        self.controller = None
+
+    def setController(self,controller):
+        self.controller = controller
+        
     def TransWindow(self, gif_path, gif_file_name, current_frame, gif_path2, gif_file_name2, current_frame2, gif_path3, gif_file_name3, current_frame3):
         window = tkinter.Tk()
         canvas = tkinter.Canvas(window, width=200, height=100, bg=bg, highlightthickness=0)
@@ -78,9 +84,13 @@ class sheepViews():
         
         # Right-click menu
         sheepMenu = Menu(window, tearoff=0, bg='lightgreen')
-        sheepMenu.add_command(label="Return to Main Menu")
+        sheepMenu.add_command(label="Return to Main Menu", command=self.controller.openMainMenu)
         sheepMenu.add_separator()
-        sheepMenu.add_command(label="Temp-hide (15 secs)")
+        sheepMenu.add_command(label="Temp-hide (15 secs)")#command=self.controller.tempHideSheep
+        sheepMenu.add_separator()
+        sheepMenu.add_command(label="Completed Task", command=self.controller.completeTask)
+        sheepMenu.add_command(label="Failed Task")
+
 
         def popup(event):
             try:
