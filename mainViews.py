@@ -8,7 +8,6 @@ from tkinter import *
 # grid(): The grid system organizes our window into rows and columns to be filled.
 # If we don't like this option, there is also pack(), which operates more relative
 # to the widgets in the window.
-
 class mainViews():
 
     def __init__(self):

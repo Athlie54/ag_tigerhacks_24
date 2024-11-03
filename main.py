@@ -10,4 +10,5 @@ if __name__ == '__main__':
     sheepView = sheepViews.sheepViews()
     maincontroller = mainController.mainController(mainView, sheepView)
     mainView.setController(maincontroller)
+    sheepView.setController(maincontroller)
     maincontroller.openSheep()
