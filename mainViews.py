@@ -12,6 +12,11 @@ class mainViews():
 
     def __init__(self):
         self.controller = None
+        self.window=Tk()
+        self.task=""
+        self.sheep=""
+        self.workTime=0
+        self.restTime=0
 
     def setController(self,controller):
         self.controller = controller
@@ -24,14 +29,14 @@ class mainViews():
 
     # main menu/view(s)
     def MainMenu(self):
-        root = Tk()
-        #taskList = list()
+        root = self.window
+        sName = tk.StringVar() # var to hold sheep
         taskItem = tk.StringVar() # var to hold task
-        title = Label(root, text='Welcome to the Pomodoro Flock!')
+        title = Label(root, text='Welcome to Flock Focus!')
         title.grid(row=0) # row 0 is just the top
         query = Label(root, text='Name your sheep: ')
         query.grid(row=1)
-        sheepName = Entry(root)
+        sheepName = Entry(root,textvariable=sName)
         sheepName.grid(row=1,column=1, columnspan=4) # query and sheepName are both row 1, but the name is next
         # to query so it has column 1
         task = Label(root, text='Enter your task: ')
