@@ -17,4 +17,4 @@ if __name__ == '__main__':
     #here's the sheep doin a little dance using the animation controller
     animation = animationController.animationController(sheepView)
     while True:
-        sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0, "TransSheep\\", "GrowthTrans.gif", i/5, "TransSheep\\", "SheepEatHeadTrans.gif", i)
+        sheepView.TransWindow("TransSheep\\", "SheepEatBodyTrans.gif", 0, "TransSheep\\", "GrowthTrans.gif", 0, "TransSheep\\", "SheepEatHeadTrans.gif", 0)
