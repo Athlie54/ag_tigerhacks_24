@@ -81,13 +81,13 @@ class sheepViews():
         self.window.geometry(f'{window_size}x{window_size}')
         
         # Resize and display each GIF layer
-        resized_frame1 = animation_frames1[0].zoom(window_size // 32, window_size // 32)
+        resized_frame1 = self.layer1[indexLayer1].zoom(window_size // 32, window_size // 32)
         canvas.create_image(10, 10, anchor=NW, image=resized_frame1)
 
-        resized_frame2 = animation_frames2[0].zoom(window_size // 32, window_size // 32)
+        resized_frame2 = self.layer2[indexLayer2].zoom(window_size // 32, window_size // 32)
         canvas.create_image(10, 10, anchor=NW, image=resized_frame2)
 
-        resized_frame3 = animation_frames3[0].zoom(window_size // 32, window_size // 32)
+        resized_frame3 = self.layer3[indexLayer3].zoom(window_size // 32, window_size // 32)
         canvas.create_image(10, 10, anchor=NW, image=resized_frame3)
         
         
