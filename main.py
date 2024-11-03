@@ -6,14 +6,37 @@ import sheepViews
 import animationController
 import time
 
-def update_animation(root, sheep_view, frame_indexes=[0,0,0]):
-    # Update each layer's frame index
-    frame_indexes[0] = (frame_indexes[0] + 1) % len(sheep_view.layer1)
-    frame_indexes[1] = (frame_indexes[1] + 1) % len(sheep_view.layer2)
-    frame_indexes[2] = (frame_indexes[2] + 1) % len(sheep_view.layer3)
+class AnimationState:
+    IDLE = "idle"
+    EATING = "eating"
+    SHOCKED = "shocked"
     
-    sheep_view.update_frames(*frame_indexes)
-    root.after(100, lambda: update_animation(root, sheep_view, frame_indexes))
+def get_frames_for_state(state, frame_counter):
+    if state == AnimationState.IDLE:
+        return (0, 2, 0)  # idle pose: base body, max growth, base head
+    elif state == AnimationState.EATING:
+        head_frame = frame_counter % 15  # cycle through eating head frames
+        return (0, 2, head_frame)
+    elif state == AnimationState.SHOCKED:
+        if frame_counter < 18:  # lightning animation
+            return (1, 2, frame_counter + 15)  # offset for lightning frames
+        else:
+            shock_frame = min((frame_counter - 18) % 24, 23)  # shocked face animation
+            return (shock_frame + 2, 2, 32)  # offset for shocked frames
+    return (0, 2, 0)  # default to idle
+
+def update_animation(root, sheep_view, current_state=AnimationState.IDLE, frame_counter=0):
+    frames = get_frames_for_state(current_state, frame_counter)
+    sheep_view.update_frames(*frames)
+    
+    # Update frame counter
+    frame_counter = (frame_counter + 1) % 50  # arbitrary max frames
+    
+    # Example of how to change states (you can add your own triggers)
+    if frame_counter == 0:  # Reset to idle after animation completes
+        current_state = AnimationState.IDLE
+    
+    root.after(100, lambda: update_animation(root, sheep_view, current_state, frame_counter))
 
 if __name__ == '__main__':
     root = tkinter.Tk()
@@ -28,8 +51,8 @@ if __name__ == '__main__':
     sheepView.setAnimationController(animationcontroller)
 
     mainView.MainMenu()
-    # Start the animation loop with initial frame indexes
-    update_animation(root, sheepView, [0,0,0])
+    # Start with idle animation
+    update_animation(root, sheepView, AnimationState.IDLE)
     
     # Start the main event loop
     root.mainloop()
