@@ -35,7 +35,7 @@ class mainViews():
         print(self.sheep)
         print(self.workTime)
         self.setRestTime((rHrs*3600)+(rMins*60))
-        checkForShammy()
+        self.checkForShammy(sheep)
 
     # main menu/view(s)
     def MainMenu(self):
@@ -83,11 +83,11 @@ class mainViews():
         Label(root, text='minute(s)').grid(row=4, column=4)
         
         
-
+        # button info
         quit = Button(root, text='EXIT', command=root.quit)
         quit.grid(row=6,column=0)
         # go = Button(root, text='GO',command = lambda: self.controller.setTaskAndSheep(sheepName.get(),taskEntry.get(),workTimeHours.get(),workTimeMinutes.get(),breakTimeHours.get(),breakTimeMinutes.get()))
-        go = Button(root,text="GO",command=assignVals(sName.get(),taskItem.get(),wHours.get(),wMinutes.get(),rHours.get(),rMinutes.get()))
+        go = Button(root,text="GO",command=lambda:self.assignVals(sName.get(),taskItem.get(),wHours.get(),wMinutes.get(),rHours.get(),rMinutes.get()))
         go.grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
         root.mainloop()
 
