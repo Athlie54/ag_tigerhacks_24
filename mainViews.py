@@ -11,6 +11,12 @@ from tkinter import *
 
 class mainViews():
 
+    def __init__(self):
+        self.controller = None
+
+    def setController(self,controller):
+        self.controller = controller
+
     def checkForShammy(root,name):
         print(name.get())
         if(name.get() == "Shammy"):
@@ -20,7 +26,7 @@ class mainViews():
     # main menu/view(s)
     def MainMenu(self):
         root = Tk()
-        taskList = list()
+        #taskList = list()
         taskItem = tk.StringVar() # var to hold task
         title = Label(root, text='Welcome to the Pomodoro Flock!')
         title.grid(row=0) # row 0 is just the top
@@ -59,7 +65,7 @@ class mainViews():
 
         quit = Button(root, text='EXIT', command=root.quit)
         quit.grid(row=6,column=0)
-        go = Button(root, text='GO')
+        go = Button(root, text='GO',command = lambda: self.controller.setTaskAndSheep(sheepName.get(),taskEntry.get(),workTimeHours.get(),workTimeMinutes.get(),breakTimeHours.get(),breakTimeMinutes.get()))
         go.grid(row=6,column=1) # starts the little sheep animation guy thing I am very tired
         root.mainloop()
 

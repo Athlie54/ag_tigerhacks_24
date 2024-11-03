@@ -11,6 +11,7 @@ class Task:
         self.timeRemaining = None
         self.timeEnded = None
         self.isWorking = True
+        print(self.taskName,self.timeToWork,self.timeToRest)
 
     def start(self):
         self.timeStarted = datetime.datetime.now()
