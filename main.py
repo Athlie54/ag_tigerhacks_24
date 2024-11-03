@@ -50,7 +50,7 @@ if __name__ == '__main__':
     sheepView.setController(maincontroller)
     sheepView.setAnimationController(animationcontroller)
 
-    mainView.MainMenu()
+    maincontroller.openMainMenu()
     # Start with idle animation
     update_animation(root, sheepView, AnimationState.IDLE)
     
