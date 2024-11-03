@@ -10,4 +10,4 @@ if __name__ == '__main__':
     sheepView = sheepViews.sheepViews()
     maincontroller = mainController.mainController(mainView, sheepView)
     mainView.setController(maincontroller)
-    maincontroller.openMainMenu()
+    maincontroller.openSheep()
