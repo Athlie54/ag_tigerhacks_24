@@ -3,8 +3,11 @@ import time
 
 class animationController:
     
+    waitTime = 0.1
+    
     # INIT, BLASTER AND SETTERS
-    def __init__(self):
+    def __init__(self, sheepview):
+        self.sheepview = sheepview
         self.layer1 = ["TransSheep\\", "SheepEatBodyTrans.gif", 0]
         self.layer2 = ["TransSheep\\", "GrowthTrans.gif", 0]
         self.layer3 = ["TransSheep\\", "SheepEatHeadTrans.gif", 0]
@@ -44,12 +47,24 @@ class animationController:
         for i in range(15):
             self.setLayer3("TransSheep\\", "SheepEatHeadTrans.gif", i)
             self.blastLayersToSheep()
-            time.sleep(0.1)
+            time.sleep(self.waitTime)
         self.SheepIdle()
         
     def SheepShocked(self):
-        for i in range(18):
-            self.setLayer3("TransSheep\\", "LightningTrans.gif", 0)
-        
-        
-    
+        self.setLayer1("TransSheep\\", "SheepEatTrans.gif", 0)
+        self.blastLayersToSheep()
+        for i in range(10):
+            self.setLayer3("TransSheep\\", "LightningTrans.gif", i)
+            self.blastLayersToSheep()
+            time.wait(self.waitTime)
+        for i in range(9):
+            self.setLayer1("TransSheep\\", "ShockedSheep.gif", i)
+            self.setLayer3("TransSheep\\", "LightningTrans.gif", 10+i)
+            self.blastLayersToSheep()
+            time.wait(self.waitTime)
+        for i in range(15):
+            self.setLayer1("TransSheep\\", "ShockedSheep.gif", 9+i)
+            self.setLayer3("TransSheep\\", "LightningTrans.gif", 16-i)
+            self.blastLayersToSheep()
+            time.wait(self.waitTime)
+        self.SheepIdle()
