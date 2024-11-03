@@ -37,6 +37,8 @@ class mainViews():
         print(self.workTime)
         self.setRestTime((rHrs*3600)+(rMins*60))
         self.checkForShammy()
+        self.controller.setTaskAndSheep(self.getSheep,self.getTask,self.getWorkTime,self.getRestTime)
+
 
     # main menu/view(s)
     def MainMenu(self):
@@ -100,11 +102,23 @@ class mainViews():
 
     def setTask(self,task):
         self.task=task
+
+    def getTask(self):
+        return self.task
     
     def setWorkTime(self,wTime):
         self.workTime=wTime
 
+    def getWorkTime(self):
+        return self.workTime
+
     def setRestTime(self,rTime):
         self.restTime=rTime
+    
+    def getRestTime(self):
+        return self.restTime
+    
+    def getRoot(self):
+        return self.window
 
     #MainMenu()

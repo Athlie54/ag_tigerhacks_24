@@ -23,10 +23,11 @@ class mainController:
         sView.quit
 
     def closeMainMenu(self):
-        self.mainview.root.quit
+        mainRoot = self.mainview.getRoot()
+        mainRoot.quit()
 
-    def setTaskAndSheep(self,sheep,task,workTimeHours,workTimeMinutes,breakTimeHours,breakTimeMinutes):
-        self.currentTask = taskClass.Task(task,int(workTimeHours)*3600+int(workTimeMinutes)*60,int(breakTimeHours)*3600+int(breakTimeMinutes)*60)
+    def setTaskAndSheep(self,sheep,task,workTime,breakTime):
+        self.currentTask = taskClass.Task(task,workTime,breakTime)
         self.currentSheep = sheepClass.Sheep(sheep)
         #self.closeMainMenu() # fix this one
         #self.openSheep()
