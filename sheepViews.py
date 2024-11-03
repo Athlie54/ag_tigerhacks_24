@@ -72,10 +72,21 @@ class sheepViews():
         self.canvas.delete("all")
         window_size = int(self.window.winfo_screenwidth() / 16)
         
-        for frame, index in [(self.layer1[indexLayer1], indexLayer1),
-                           (self.layer2[indexLayer2], indexLayer2),
-                           (self.layer3[indexLayer3], indexLayer3)]:
+        # Store resized frames references
+        self.current_frames = []
+        
+        # Create layers in correct order (bottom to top)
+        layers = [
+            (self.layer1[indexLayer1], "layer1"),
+            (self.layer2[indexLayer2], "layer2"),
+            (self.layer3[indexLayer3], "layer3")
+        ]
+        
+        # Center position calculation
+        center_x = window_size // 2
+        center_y = window_size // 2
+        
+        for frame, layer_name in layers:
             resized_frame = frame.zoom(window_size // 32, window_size // 32)
-            self.canvas.create_image(10, 10, anchor=NW, image=resized_frame)
-            # Keep a reference to prevent garbage collection
-            setattr(self, f'current_frame_{index}', resized_frame)
+            self.current_frames.append(resized_frame)  # Prevent garbage collection
+            self.canvas.create_image(center_x, center_y, anchor=CENTER, image=resized_frame, tags=layer_name)

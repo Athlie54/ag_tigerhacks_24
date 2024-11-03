@@ -6,9 +6,14 @@ import sheepViews
 import animationController
 import time
 
-def update_animation(root, sheep_view, current_frame=0):
-    sheep_view.update_frames(0, 2, 0)
-    root.after(1000, lambda: update_animation(root, sheep_view, (current_frame + 1) % 3))
+def update_animation(root, sheep_view, frame_indexes=[0,0,0]):
+    # Update each layer's frame index
+    frame_indexes[0] = (frame_indexes[0] + 1) % len(sheep_view.layer1)
+    frame_indexes[1] = (frame_indexes[1] + 1) % len(sheep_view.layer2)
+    frame_indexes[2] = (frame_indexes[2] + 1) % len(sheep_view.layer3)
+    
+    sheep_view.update_frames(*frame_indexes)
+    root.after(100, lambda: update_animation(root, sheep_view, frame_indexes))
 
 if __name__ == '__main__':
     root = tkinter.Tk()
@@ -20,8 +25,8 @@ if __name__ == '__main__':
     mainView.setController(maincontroller)
     sheepView.setController(maincontroller)
     
-    # Start the animation loop
-    update_animation(root, sheepView)
+    # Start the animation loop with initial frame indexes
+    update_animation(root, sheepView, [0,0,0])
     
     # Start the main event loop
     root.mainloop()
