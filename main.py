@@ -6,18 +6,22 @@ import sheepViews
 import animationController
 import time
 
+def update_animation(root, sheep_view, current_frame=0):
+    sheep_view.update_frames(0, 2, 0)
+    root.after(1000, lambda: update_animation(root, sheep_view, (current_frame + 1) % 3))
 
 if __name__ == '__main__':
+    root = tkinter.Tk()
+    
     mainView = mainViews.mainViews()
-    sheepView = sheepViews.sheepViews()
+    sheepView = sheepViews.sheepViews(root)
     maincontroller = mainController.mainController(mainView, sheepView)
+    
     mainView.setController(maincontroller)
     sheepView.setController(maincontroller)
-    #maincontroller.openSheep()
-    #here's the sheep doin a little dance using the animation controller
-    animation = animationController.animationController(sheepView)
-
     
-    while True:
-        sheepView.TransWindow(0, 2, 0)
-        time.sleep(1)
+    # Start the animation loop
+    update_animation(root, sheepView)
+    
+    # Start the main event loop
+    root.mainloop()
